@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDom from "react-dom/client";
+import "./index.css";
+import pizzaData from "./data";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -12,27 +14,46 @@ function App() {
 }
 
 function Pizza() {
-  return <h2>pizza</h2>;
-}
-
-function Header() {
-  return <h1>Fast Pizza Header</h1>;
-}
-
-function Menu() {
   return (
     <div>
-      <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      {/* image */}
+      <h3>pizza</h3>
+      <p>Spinach, tomato, cheese</p>
     </div>
   );
 }
 
-function Footer() {
+function Header() {
+  const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
+
   return (
-    <footer>{new Date().toLocaleTimeString()} We're currently open!</footer>
+    <header className="header">
+      <h1>Fast Pizza Header</h1>
+    </header>
+  );
+}
+
+function Menu() {
+  return (
+    <main className="menu">
+      <h2>Our Menu</h2>
+      <Pizza />
+      <Pizza />
+      <Pizza />
+    </main>
+  );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+
+  return (
+    <footer className="footer">
+      {new Date().toLocaleTimeString()} We're currently open!
+    </footer>
   );
   // return React.createElement("footer", null, "We're currently open!");
 }
