@@ -13,16 +13,6 @@ function App() {
   );
 }
 
-function Pizza() {
-  return (
-    <div>
-      {/* image */}
-      <h3>pizza</h3>
-      <p>Spinach, tomato, cheese</p>
-    </div>
-  );
-}
-
 function Header() {
   const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
 
@@ -37,10 +27,26 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="spinachi"
+        ingredients="Spinach, tomato, cheese"
+        photoName="pizzas/focaccia.jpg"
+        price={20}
+      />
     </main>
+  );
+}
+
+function Pizza({ name, ingredients, photoName, price }) {
+  return (
+    <div className="pizza">
+      <img src={photoName} alt={photoName} />
+      <div>
+        <h3>pizza {name}</h3>
+        <p>{ingredients}</p>
+        <span>RM {price}</span>
+      </div>
+    </div>
   );
 }
 
