@@ -41,7 +41,8 @@ function Menu() {
   );
 }
 
-function Pizza({ pizzaObj: { name, ingredients, photoName, price } }) {
+function Pizza({ pizzaObj: { name, ingredients, photoName, price, soldOut } }) {
+  if (soldOut) return null;
   return (
     <li className="pizza">
       <img src={photoName} alt={photoName} />
@@ -60,6 +61,8 @@ function Footer() {
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
   console.log(isOpen);
+
+  // if (!isOpen) return <p>CLOSED</p>;
 
   return (
     <footer className="footer">
